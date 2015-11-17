@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
 require "charlotte"
+require "charlotte/cli"
 
-puts "haro world"
+Charlotte::CLI.start( ARGV )
