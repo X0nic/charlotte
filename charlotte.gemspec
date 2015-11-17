@@ -5,7 +5,7 @@ require 'charlotte/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "charlotte"
-  spec.version       = Charlotte::VERSION
+  spec.version       = Charlotte::Version
   spec.authors       = ["Nathan Lee"]
   spec.email         = ["nathan@globalphobia.com"]
 
