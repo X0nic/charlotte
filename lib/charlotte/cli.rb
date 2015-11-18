@@ -2,19 +2,6 @@ require "thor"
 
 module Charlotte
   class CLI < Thor
-    desc "hello NAME", "This will greet you"
-    long_desc <<-EOF
-
-    `hello NAME` will print out a message to the person of your choosing.
-
-    EOF
-    option :upcase
-    def hello( name )
-      greeting = "Hello, #{name}"
-      greeting.upcase! if options[:upcase]
-      puts greeting
-    end
-
     desc "get URL", "This will grab a URL"
     def get(url)
       puts http_get(url).body
