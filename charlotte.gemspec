@@ -32,4 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
 
   spec.add_dependency "thor"
+  spec.add_dependency "faraday"
+  spec.add_dependency "faraday_middleware"
 end
