@@ -4,9 +4,9 @@ class SiteFetcher
     @url = "http://#{domain}"
   end
 
-  def links
-    html_doc = Nokogiri::HTML(http_get(@url).body)
-    puts get_all_internal_hrefs(html_doc)
+  def fetch
+    html_body = http_get(@url).body
+    Page.new(html_body).links
   end
 
   private
@@ -16,15 +16,4 @@ class SiteFetcher
       connection.adapter Faraday.default_adapter
     }.get("/")
   end
-
-  def get_all_hrefs(doc)
-    links = doc.css('a')
-
-    links.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if(&:empty?)
-  end
-
-  def get_all_internal_hrefs(doc)
-    get_all_hrefs(doc).reject{|link| link.match(/^http/)}
-  end
 end
-
