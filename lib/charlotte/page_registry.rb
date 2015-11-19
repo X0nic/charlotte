@@ -3,9 +3,7 @@ class PageRegistry
   FETCHED     = :fetched
 
   def initialize
-    @registry = {
-      "/" => PageRegistry::FETCHED
-    }
+    @registry = { }
   end
 
   def add_links(uris)
@@ -19,8 +17,23 @@ class PageRegistry
     registry
   end
 
+  def links_to_fetch
+    registry.reject{|k,v| v == PageRegistry::FETCHED}.keys
+  end
+
+  def uri_fetched(uri)
+    registry[uri] = PageRegistry::FETCHED
+  end
+
   def to_s
     registry.map{|k,v| "#{k} - #{v}\n"}
+  end
+
+  def stats
+    {
+      :unfetched => links_to_fetch.count,
+      :total => links.count
+    }
   end
 
   private
