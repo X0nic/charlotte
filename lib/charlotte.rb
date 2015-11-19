@@ -3,6 +3,7 @@ require "faraday_middleware"
 require "nokogiri"
 
 require "charlotte/site_fetcher"
+require "charlotte/page"
 require "charlotte/version"
 
 module Charlotte
