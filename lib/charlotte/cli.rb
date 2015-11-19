@@ -4,7 +4,7 @@ module Charlotte
   class CLI < Thor
     desc "links DOMAIN", "This will list all links found at a domain"
     def links(domain)
-      puts SiteFetcher.new(domain).fetch
+      puts SiteFetcher.new(domain).fetch.to_s
     end
 
     desc "version", "Print Charlotte's version information"
