@@ -4,28 +4,10 @@ module Charlotte
   class CLI < Thor
     desc "links DOMAIN", "This will list all links found at a domain"
     def links(domain)
-      page_registry = SiteFetcher.new(domain).fetch
+      site_fetcher = SiteFetcher.new(domain)
 
-      print "*"*10
-      print " All Urls "
-      print "*"*10
-      print "\n"
-
-      puts page_registry.to_s
-
-      print "*"*10
-      print " Urls to fetch "
-      print "*"*10
-      print "\n"
-
-      puts page_registry.links_to_fetch
-
-      print "*"*10
-      print " Stats "
-      print "*"*10
-      print "\n"
-
-      puts page_registry.stats
+      site_fetcher.fetch
+      site_fetcher.print_results
     end
 
     desc "version", "Print Charlotte's version information"
