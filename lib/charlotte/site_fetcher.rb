@@ -10,25 +10,26 @@ class SiteFetcher
 
   def fetch
     page = fetch_page("/", http_get("/").body)
-    page_registry.add_links(page.links)
+    page_registry.add(page)
 
-    # links_to_fetch = page_registry.links_to_fetch
-    # links_to_fetch.each do |uri|
-    #   page = fetch_page(uri, http_get(uri).body)
-    #   page_registry.add_links(page.links)
-    # end
+    links_to_fetch = page_registry.links_to_fetch
+    links_to_fetch.each do |uri|
+      page = fetch_page(uri, http_get(uri).body)
+      page_registry.add(page)
+    end
 
     page_registry
   end
 
   def print_results
     print_header "All Urls"
-
     puts page_registry.to_s
 
     print_header "Urls to fetch"
-
     puts page_registry.links_to_fetch
+
+    print_header "Assets"
+    puts page_registry.assets.uniq
 
     print_header("Stats")
     puts page_registry.stats

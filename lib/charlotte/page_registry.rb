@@ -4,13 +4,16 @@ class PageRegistry
 
   def initialize
     @registry = { }
+    @assets = []
   end
 
-  def add_links(uris)
-    uris_to_add = clean_uris(uris)
-    uris_to_add.each do |uri|
-      registry[uri] = PageRegistry::NOT_FETCHED
-    end
+  def add(page)
+    add_links(page.links)
+    add_assets(page.assets)
+  end
+
+  def assets
+    @assets
   end
 
   def links
@@ -32,11 +35,23 @@ class PageRegistry
   def stats
     {
       :unfetched => links_to_fetch.count,
+      :assets => assets.uniq.count,
       :total => links.count
     }
   end
 
   private
+  def add_assets(assets_to_add)
+    (assets << assets_to_add).flatten!
+  end
+
+  def add_links(uris)
+    uris_to_add = clean_uris(uris)
+    uris_to_add.each do |uri|
+      registry[uri] = PageRegistry::NOT_FETCHED
+    end
+  end
+
   def registry
     @registry
   end
