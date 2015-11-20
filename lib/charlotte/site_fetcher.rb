@@ -22,29 +22,26 @@ class SiteFetcher
   end
 
   def print_results
-    print "*"*10
-    print " All Urls "
-    print "*"*10
-    print "\n"
+    print_header "All Urls"
 
     puts page_registry.to_s
 
-    print "*"*10
-    print " Urls to fetch "
-    print "*"*10
-    print "\n"
+    print_header "Urls to fetch"
 
     puts page_registry.links_to_fetch
 
-    print "*"*10
-    print " Stats "
-    print "*"*10
-    print "\n"
-
+    print_header("Stats")
     puts page_registry.stats
   end
 
   private
+  def print_header(header)
+    print "*"*10
+    print " #{header} "
+    print "*"*10
+    print "\n"
+  end
+
   def fetch_page(uri, html_body)
     page = Page.new(html_body)
     page_registry.uri_fetched(uri)
