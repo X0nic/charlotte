@@ -24,7 +24,7 @@ describe PageRegistry do
                                        "/" => PageRegistry::NOT_FETCHED
       end
       it 'adds page assets' do
-        expect(subject.assets.count).to eq 2
+        expect(subject.assets).to match assets
       end
     end
   end
@@ -50,8 +50,8 @@ describe PageRegistry do
                                        "/b" => PageRegistry::NOT_FETCHED,
                                        "/" => PageRegistry::NOT_FETCHED
       end
-      it 'adds 1 new page asset' do
-        expect(subject.assets.count).to eq 3
+      it 'does not duplicate extra asset' do
+        expect(subject.assets).to match assets + ["/test.png"]
       end
     end
   end
