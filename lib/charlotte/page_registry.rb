@@ -35,14 +35,14 @@ class PageRegistry
   def stats
     {
       :unfetched => links_to_fetch.count,
-      :assets => assets.uniq.count,
+      :assets => assets.count,
       :total => links.count
     }
   end
 
   private
   def add_assets(assets_to_add)
-    (assets << assets_to_add).flatten!
+    (assets << assets_to_add).flatten!.uniq!
   end
 
   def add_links(uris)
