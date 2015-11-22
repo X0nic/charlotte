@@ -20,8 +20,8 @@ describe PageRegistry do
         expect(subject.links.count).to eq 2
       end
       it 'adds page links' do
-        expect(subject.links).to include "/a" => PageRegistry::NOT_FETCHED
-        expect(subject.links).to include "/" => PageRegistry::NOT_FETCHED
+        expect(subject.links).to match "/a" => PageRegistry::NOT_FETCHED,
+                                       "/" => PageRegistry::NOT_FETCHED
       end
       it 'adds page assets' do
         expect(subject.assets.count).to eq 2
@@ -46,9 +46,9 @@ describe PageRegistry do
         expect(subject.links.count).to eq 3
       end
       it 'does not overwrite existing links' do
-        expect(subject.links).to include "/a" => PageRegistry::FETCHED
-        expect(subject.links).to include "/b" => PageRegistry::NOT_FETCHED
-        expect(subject.links).to include "/" => PageRegistry::NOT_FETCHED
+        expect(subject.links).to match "/a" => PageRegistry::FETCHED,
+                                       "/b" => PageRegistry::NOT_FETCHED,
+                                       "/" => PageRegistry::NOT_FETCHED
       end
       it 'adds 1 new page asset' do
         expect(subject.assets.count).to eq 3
