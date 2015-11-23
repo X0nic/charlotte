@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe PageRegistry do
+  subject(:registry) { PageRegistry.new }
+
   let(:links) { ["/a", "/"] }
   let(:assets) { ["/test2.png", "favicon.ico"] }
   let(:page) { double(Page, links: links, assets: assets) }
@@ -10,8 +12,6 @@ describe PageRegistry do
   let(:new_page) { double(Page, links: new_links, assets: new_assets) }
 
   context "with an empty registry" do
-    subject { PageRegistry.new }
-
     describe '#add' do
       before { subject.add(page) }
 
@@ -29,28 +29,27 @@ describe PageRegistry do
   end
 
   context "with a populated registry" do
-    subject do
-      registry = PageRegistry.new
+    subject(:populated_registry) do
       registry.add(page)
       registry
     end
 
     describe '#add' do
       before do
-        subject.add(new_page)
-        subject.uri_fetched("/a")
+        populated_registry.add(new_page)
+        populated_registry.uri_fetched("/a")
       end
 
       it "it adds 1 new link" do
-        expect(subject.links.count).to eq 3
+        expect(populated_registry.links.count).to eq 3
       end
       it "does not overwrite existing links" do
-        expect(subject.links).to match "/a" => PageRegistry::FETCHED,
-                                       "/b" => PageRegistry::NOT_FETCHED,
-                                       "/" => PageRegistry::NOT_FETCHED
+        expect(populated_registry.links).to match "/a" => PageRegistry::FETCHED,
+                                                  "/b" => PageRegistry::NOT_FETCHED,
+                                                  "/" => PageRegistry::NOT_FETCHED
       end
       it "does not duplicate extra asset" do
-        expect(subject.assets).to match assets + ["/test.png"]
+        expect(populated_registry.assets).to match assets + ["/test.png"]
       end
     end
   end
