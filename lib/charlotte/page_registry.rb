@@ -32,9 +32,9 @@ class PageRegistry
 
   def stats
     {
-      unfetched: links_to_fetch.count,
-      assets: assets.count,
-      total: links.count
+      total_assets: assets.count,
+      total_links: links.count,
+      unfetched_links: links_to_fetch.count
     }
   end
 

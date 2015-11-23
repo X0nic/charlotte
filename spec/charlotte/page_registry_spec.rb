@@ -26,6 +26,16 @@ describe PageRegistry do
         expect(subject.assets).to match assets
       end
     end
+
+    describe "#stats" do
+      subject(:stats) { registry.stats }
+
+      it "has zeroed stats" do
+        is_expected.to match total_links: 0,
+                             total_assets: 0,
+                             unfetched_links: 0
+      end
+    end
   end
 
   context "with a populated registry" do
@@ -50,6 +60,16 @@ describe PageRegistry do
       end
       it "does not duplicate extra asset" do
         expect(populated_registry.assets).to match assets + ["/test.png"]
+      end
+    end
+
+    describe "#stats" do
+      subject(:stats) { populated_registry.stats }
+
+      it "has zeroed stats" do
+        is_expected.to match total_links: 2,
+                             total_assets: 2,
+                             unfetched_links: 2
       end
     end
   end
