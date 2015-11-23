@@ -3,7 +3,7 @@ class PageRegistry
   FETCHED     = :fetched
 
   def initialize
-    @registry = { }
+    @registry = {}
     @assets = []
   end
 

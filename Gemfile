@@ -5,4 +5,5 @@ gemspec
 
 group :guard do
   gem "guard-rspec"
+  gem "guard-rubocop"
 end
