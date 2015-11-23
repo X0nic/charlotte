@@ -1,4 +1,4 @@
-# A sample Guardfile
+# A  sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
@@ -40,5 +40,9 @@ guard :rspec, cmd: "bundle exec rspec --color --format doc" do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
+end
 
+guard :rubocop, all_on_start: false, keep_failed: false do
+  watch(/.+\.rb$/)
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end

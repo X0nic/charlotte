@@ -6,32 +6,12 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-Lint/AmbiguousRegexpLiteral:
-  Exclude:
-    - 'lib/charlotte/page_registry.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoreEmptyBlocks.
-Lint/UnusedBlockArgument:
-  Exclude:
-    - 'lib/charlotte/page_registry.rb'
-
 # Offense count: 1
 Metrics/AbcSize:
   Max: 17
 
-# Offense count: 5
-# Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
-  Max: 104
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/Attr:
-  Exclude:
-    - 'lib/charlotte/site_fetcher.rb'
+  Max: 120
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -39,12 +19,6 @@ Style/Attr:
 Style/BlockDelimiters:
   Exclude:
     - 'lib/charlotte/site_fetcher.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/DeprecatedHashMethods:
-  Exclude:
-    - 'lib/charlotte/page_registry.rb'
 
 # Offense count: 6
 # Configuration parameters: Exclude.
@@ -59,123 +33,8 @@ Style/Documentation:
     - 'lib/charlotte/site_fetcher.rb'
     - 'lib/charlotte/version.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'lib/charlotte/page.rb'
-    - 'lib/charlotte/page_registry.rb'
-    - 'lib/charlotte/site_fetcher.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'Guardfile'
-    - 'spec/charlotte/page_registry_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'lib/charlotte/cli.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundModuleBody:
-  Exclude:
-    - 'lib/charlotte/version.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues.
-Style/HashSyntax:
-  Enabled: false
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'charlotte.gemspec'
-    - 'lib/charlotte/cli.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/SignalException:
-  Exclude:
-    - 'charlotte.gemspec'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/SpaceAfterComma:
-  Exclude:
-    - 'lib/charlotte/page_registry.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleInsidePipes, SupportedStyles.
-Style/SpaceAroundBlockParameters:
-  Exclude:
-    - 'lib/charlotte/site_fetcher.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: MultiSpaceAllowedForOperators.
-Style/SpaceAroundOperators:
-  Exclude:
-    - 'lib/charlotte/site_fetcher.rb'
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/SpaceBeforeBlockBraces:
-  Enabled: false
-
-# Offense count: 20
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-Style/SpaceInsideBlockBraces:
-  Enabled: false
-
-# Offense count: 8
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Exclude:
-    - 'spec/charlotte/page_registry_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForEmptyBraces, SupportedStyles.
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/SpaceInsideParens:
-  Exclude:
-    - 'exe/charlotte'
-
 # Offense count: 62
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: ExactNameMatch, AllowPredicates, AllowDSLWriters, IgnoreClassMethods, Whitelist.
-Style/TrivialAccessors:
-  Exclude:
-    - 'lib/charlotte/page.rb'
-    - 'lib/charlotte/page_registry.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/UnneededPercentQ:
-  Exclude:
-    - 'charlotte.gemspec'

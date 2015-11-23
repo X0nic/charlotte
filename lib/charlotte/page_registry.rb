@@ -12,16 +12,14 @@ class PageRegistry
     add_assets(page.assets)
   end
 
-  def assets
-    @assets
-  end
+  attr_reader :assets
 
   def links
     registry
   end
 
   def links_to_fetch
-    registry.reject{|k,v| v == PageRegistry::FETCHED}.keys
+    registry.reject { |_k, v| v == PageRegistry::FETCHED }.keys
   end
 
   def uri_fetched(uri)
@@ -29,18 +27,19 @@ class PageRegistry
   end
 
   def to_s
-    registry.map{|k,v| "#{k} - #{v}\n"}
+    registry.map { |k, v| "#{k} - #{v}\n" }
   end
 
   def stats
     {
-      :unfetched => links_to_fetch.count,
-      :assets => assets.count,
-      :total => links.count
+      unfetched: links_to_fetch.count,
+      assets: assets.count,
+      total: links.count
     }
   end
 
   private
+
   def add_assets(assets_to_add)
     (assets << assets_to_add).flatten!.uniq!
   end
@@ -52,12 +51,10 @@ class PageRegistry
     end
   end
 
-  def registry
-    @registry
-  end
+  attr_reader :registry
 
   def clean_uris(uris)
     # TODO: Clean this up, and test it. It won't catch everything properly.
-    uris.reject{|uri| registry.has_key?(uri)}.reject{|uri| uri.match /:/}.reject{|uri| uri.match /#/}
+    uris.reject { |uri| registry.key?(uri) }.reject { |uri| uri.match(/:/) }.reject { |uri| uri.match(/#/) }
   end
 end

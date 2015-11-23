@@ -12,32 +12,31 @@ class Page
   end
 
   private
-  def html_doc
-    @html_doc
-  end
+
+  attr_reader :html_doc
 
   def images
     images = html_doc.css('img')
-    images.map {|link| link.attribute('src').to_s}.uniq.sort.delete_if(&:empty?)
+    images.map { |link| link.attribute('src').to_s }.uniq.sort.delete_if(&:empty?)
   end
 
   def stylesheets
     styles = html_doc.css('link')
-    styles.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if(&:empty?)
+    styles.map { |link| link.attribute('href').to_s }.uniq.sort.delete_if(&:empty?)
   end
 
   def scripts
     images = html_doc.css('scripts')
-    images.map {|link| link.attribute('src').to_s}.uniq.sort.delete_if(&:empty?)
+    images.map { |link| link.attribute('src').to_s }.uniq.sort.delete_if(&:empty?)
   end
 
   def get_all_hrefs(doc)
     links = doc.css('a')
 
-    links.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if(&:empty?)
+    links.map { |link| link.attribute('href').to_s }.uniq.sort.delete_if(&:empty?)
   end
 
   def get_all_internal_hrefs(doc)
-    get_all_hrefs(doc).reject{|link| link.match(/^http/)}
+    get_all_hrefs(doc).reject { |link| link.match(/^http/) }
   end
 end

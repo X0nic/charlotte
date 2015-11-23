@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe PageRegistry do
-
-  let(:links) { [ "/a", "/" ] }
-  let(:assets) { [ "/test2.png", "favicon.ico" ] }
+  let(:links) { ["/a", "/"] }
+  let(:assets) { ["/test2.png", "favicon.ico"] }
   let(:page) { double(Page, links: links, assets: assets) }
 
-  let(:new_assets) { [ "/test.png", "favicon.ico" ] }
-  let(:new_links) { [ "/a", "/b" ] }
+  let(:new_assets) { ["/test.png", "favicon.ico"] }
+  let(:new_links) { ["/a", "/b"] }
   let(:new_page) { double(Page, links: new_links, assets: new_assets) }
 
   context 'with an empty registry' do

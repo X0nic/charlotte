@@ -14,7 +14,6 @@ module Charlotte
     def version
       puts "Charlotte version #{Charlotte::Version}"
     end
-    map %w[-v --version] => :version
-
+    map %w(-v --version) => :version
   end
 end

@@ -1,5 +1,5 @@
 class SiteFetcher
-  attr :root_url, :page_registry
+  attr_reader :root_url, :page_registry
 
   def initialize(domain)
     @domain = domain
@@ -36,10 +36,11 @@ class SiteFetcher
   end
 
   private
+
   def print_header(header)
-    print "*"*10
+    print "*" * 10
     print " #{header} "
-    print "*"*10
+    print "*" * 10
     print "\n"
   end
 
@@ -51,7 +52,7 @@ class SiteFetcher
 
   def http_get(url_to_get)
     puts "Fetching #{@root_url}#{url_to_get}"
-    Faraday.new(@root_url) { | connection |
+    Faraday.new(@root_url) { |connection|
       connection.use FaradayMiddleware::FollowRedirects
       connection.adapter Faraday.default_adapter
     }.get(url_to_get)

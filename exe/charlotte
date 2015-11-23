@@ -3,4 +3,4 @@
 require "charlotte"
 require "charlotte/cli"
 
-Charlotte::CLI.start( ARGV )
+Charlotte::CLI.start(ARGV)
