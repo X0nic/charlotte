@@ -1,24 +1,30 @@
 class SiteFetcher
-  attr_reader :root_url, :page_registry
+  attr_reader :root_url, :page_registry, :levels, :current_level
 
-  def initialize(domain)
+  def initialize(domain, levels)
     @domain = domain
+    @levels = levels
+    @current_level = 0
 
     @page_registry = PageRegistry.new
     @root_url = "http://#{domain}"
   end
 
   def fetch
-    page = fetch_page("/", http_get("/").body)
-    page_registry.add(page)
+    fetch_set(["/"])
 
-    links_to_fetch = page_registry.links_to_fetch
+    while current_level < levels
+      fetch_set(page_registry.links_to_fetch)
+    end
+    page_registry
+  end
+
+  def fetch_set(links_to_fetch)
     links_to_fetch.each do |uri|
       page = fetch_page(uri, http_get(uri).body)
       page_registry.add(page)
     end
-
-    page_registry
+    @current_level += 1
   end
 
   def print_results
