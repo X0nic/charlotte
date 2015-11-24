@@ -4,6 +4,8 @@ class PageRegistry
 
   ROOT_URL    = "/"
 
+  attr_reader :assets
+
   def initialize
     @registry = {}
     @assets = []
@@ -15,8 +17,6 @@ class PageRegistry
     add_links(page.links)
     add_assets(page.assets)
   end
-
-  attr_reader :assets
 
   def links
     registry
