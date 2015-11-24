@@ -67,6 +67,8 @@ class SiteFetcher
     Faraday.new(@root_url) { |connection|
       connection.use FaradayMiddleware::FollowRedirects
       connection.adapter Faraday.default_adapter
+    }.tap { |transport|
+      transport.headers[:user_agent] = "Charlotte/#{Charlotte::Version} (https://github.com/X0nic/charlotte)"
     }.get(url_to_get)
   end
 end
