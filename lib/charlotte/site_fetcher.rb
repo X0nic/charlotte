@@ -11,8 +11,6 @@ class SiteFetcher
   end
 
   def fetch
-    fetch_set(["/"])
-
     while current_level < levels
       fetch_set(page_registry.links_to_fetch)
     end

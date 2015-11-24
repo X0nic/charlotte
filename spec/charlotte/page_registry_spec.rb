@@ -12,6 +12,12 @@ describe PageRegistry do
   let(:new_page) { double(Page, links: new_links, assets: new_assets) }
 
   context "with an empty registry" do
+    describe "#initialize" do
+      it "initializes with the root url" do
+        expect(subject.links).to match "/" => PageRegistry::NOT_FETCHED
+      end
+    end
+
     describe '#add' do
       before { subject.add(page) }
 
@@ -31,9 +37,9 @@ describe PageRegistry do
       subject(:stats) { registry.stats }
 
       it "has zeroed stats" do
-        is_expected.to match total_links: 0,
+        is_expected.to match total_links: 1,
                              total_assets: 0,
-                             unfetched_links: 0
+                             unfetched_links: 1
       end
     end
   end

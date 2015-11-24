@@ -2,9 +2,13 @@ class PageRegistry
   NOT_FETCHED = :not_fetched
   FETCHED     = :fetched
 
+  ROOT_URL    = "/"
+
   def initialize
     @registry = {}
     @assets = []
+
+    add_links([ROOT_URL])
   end
 
   def add(page)
