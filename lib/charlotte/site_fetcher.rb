@@ -11,9 +11,7 @@ class SiteFetcher
   end
 
   def fetch
-    while current_level < levels
-      fetch_set(page_registry.links_to_fetch)
-    end
+    fetch_set(page_registry.links_to_fetch) while current_level < levels
     page_registry
   end
 
@@ -62,11 +60,17 @@ class SiteFetcher
 
   def http_get(url_to_get)
     puts "Fetching #{@root_url}#{url_to_get}"
-    Faraday.new(@root_url) { |connection|
+    faraday = Faraday.new(@root_url) do |connection|
       connection.use FaradayMiddleware::FollowRedirects
       connection.adapter Faraday.default_adapter
-    }.tap { |transport|
-      transport.headers[:user_agent] = "Charlotte/#{Charlotte::Version} (https://github.com/X0nic/charlotte)"
-    }.get(url_to_get)
+    end
+
+    faraday.tap { |transport| transport.headers[:user_agent] = user_agent }
+
+    faraday.get(url_to_get)
+  end
+
+  def user_agent
+    "Charlotte/#{Charlotte::Version} (https://github.com/X0nic/charlotte)"
   end
 end
