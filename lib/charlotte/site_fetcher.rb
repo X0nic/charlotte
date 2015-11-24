@@ -19,6 +19,12 @@ class SiteFetcher
     page_registry
   end
 
+  def parallel_fetch
+    # Do some parallel stuff here
+    # https://github.com/lostisland/faraday/wiki/Parallel-requests
+    fetch
+  end
+
   def fetch_set(links_to_fetch)
     links_to_fetch.each do |uri|
       page = fetch_page(uri, http_get(uri).body)
