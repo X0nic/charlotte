@@ -35,4 +35,3 @@ class PageFetcher
     "Charlotte/#{Charlotte::Version} (https://github.com/X0nic/charlotte)"
   end
 end
-
