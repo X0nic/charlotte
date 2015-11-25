@@ -69,6 +69,23 @@ describe PageRegistry do
       end
     end
 
+    describe "#uri_fetched" do
+      before do
+        populated_registry.add(new_page)
+      end
+
+      it "marks already added uris as fetched" do
+        populated_registry.uri_fetched("/b")
+        expect(populated_registry.links).to include "/b" => PageRegistry::FETCHED
+      end
+
+      it "errors when uri has not already been added" do
+        expect {
+          populated_registry.uri_fetched("/middle_of_nowhere")
+        }.to raise_error(PageRegistry::NotRegisteredError, "Don't know about this url, can not mark it as fetched.")
+      end
+    end
+
     describe "#stats" do
       subject(:stats) { populated_registry.stats }
 

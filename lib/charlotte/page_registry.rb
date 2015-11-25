@@ -1,4 +1,6 @@
 class PageRegistry
+  class NotRegisteredError < StandardError; end
+
   NOT_FETCHED = :not_fetched
   FETCHED     = :fetched
 
@@ -27,7 +29,8 @@ class PageRegistry
   end
 
   def uri_fetched(uri)
-    registry[uri] = PageRegistry::FETCHED
+    return registry[uri] = PageRegistry::FETCHED if registry.key?(uri)
+    raise NotRegisteredError, "Don't know about this url, can not mark it as fetched."
   end
 
   def to_s
