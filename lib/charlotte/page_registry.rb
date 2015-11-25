@@ -30,7 +30,7 @@ class PageRegistry
 
   def uri_fetched(uri)
     return registry[uri] = PageRegistry::FETCHED if registry.key?(uri)
-    raise NotRegisteredError, "Don't know about this url, can not mark it as fetched."
+    fail NotRegisteredError, "Don't know about this url, can not mark it as fetched."
   end
 
   def to_s
