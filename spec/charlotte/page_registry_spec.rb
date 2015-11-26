@@ -5,11 +5,13 @@ describe PageRegistry do
 
   let(:links) { ["/a", "/"] }
   let(:assets) { ["/test2.png", "favicon.ico"] }
-  let(:page) { double(Page, links: links, assets: assets) }
+  let(:page) { instance_double(Page, links: links, assets: assets) }
 
   let(:new_assets) { ["/test.png", "favicon.ico"] }
   let(:new_links) { ["/a", "/b"] }
-  let(:new_page) { double(Page, links: new_links, assets: new_assets) }
+  let(:new_page) { instance_double(Page, links: new_links, assets: new_assets) }
+
+  let(:page_set) { instance_double(PageFetchSet, pages: [page,new_page]) }
 
   context "with an empty registry" do
     describe "#initialize" do
@@ -30,6 +32,22 @@ describe PageRegistry do
       end
       it "adds page assets" do
         expect(registry.assets).to match assets
+      end
+    end
+
+    describe "#add_set" do
+      before { registry.add_set(page_set) }
+
+      it "it adds 3 links" do
+        expect(registry.links.count).to eq 3
+      end
+      it "adds page links" do
+        expect(registry.links).to match "/a" => PageRegistry::NOT_FETCHED,
+                                        "/" => PageRegistry::NOT_FETCHED,
+                                        "/b" => PageRegistry::NOT_FETCHED
+      end
+      it "adds page assets" do
+        expect(registry.assets).to match assets + ["/test.png"]
       end
     end
 

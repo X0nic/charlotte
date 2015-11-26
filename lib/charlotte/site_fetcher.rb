@@ -7,12 +7,13 @@ class SiteFetcher
     @current_level = 0
 
     @page_registry = PageRegistry.new
-    @page_fetcher = PageFetcher.new(domain, @page_registry)
+    @page_fetcher = PageFetcher.new(domain)
   end
 
   def fetch
     while current_level < levels
-      page_fetcher.fetch_set(page_registry.links_to_fetch)
+      fetch_set = page_fetcher.fetch_set(page_registry.links_to_fetch)
+      page_registry.add_set(fetch_set)
       @current_level += 1
     end
     page_registry

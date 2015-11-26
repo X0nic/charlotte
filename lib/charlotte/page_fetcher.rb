@@ -1,21 +1,24 @@
 class PageFetcher
-  attr_reader :root_url, :page_registry
+  attr_reader :root_url
 
-  def initialize(domain, page_registry)
+  def initialize(domain)
     @root_url = "http://#{domain}"
-    @page_registry = page_registry
   end
 
   def fetch_set(links_to_fetch)
+    page_fetch_set = PageFetchSet.new
+
     links_to_fetch.each do |uri|
-      page = fetch_page(uri, http_get(uri).body)
-      page_registry.add(page)
+      page = fetch_page(uri)
+      page_fetch_set.add(uri, page)
     end
+
+    page_fetch_set
   end
 
-  def fetch_page(uri, html_body)
+  def fetch_page(uri)
+    html_body = http_get(uri).body
     page = Page.new(html_body)
-    page_registry.uri_fetched(uri)
     page
   end
 
