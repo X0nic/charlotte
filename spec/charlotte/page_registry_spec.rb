@@ -14,22 +14,22 @@ describe PageRegistry do
   context "with an empty registry" do
     describe "#initialize" do
       it "initializes with the root url" do
-        expect(subject.links).to match "/" => PageRegistry::NOT_FETCHED
+        expect(registry.links).to match "/" => PageRegistry::NOT_FETCHED
       end
     end
 
     describe '#add' do
-      before { subject.add(page) }
+      before { registry.add(page) }
 
       it "it adds 2 links" do
-        expect(subject.links.count).to eq 2
+        expect(registry.links.count).to eq 2
       end
       it "adds page links" do
-        expect(subject.links).to match "/a" => PageRegistry::NOT_FETCHED,
-                                       "/" => PageRegistry::NOT_FETCHED
+        expect(registry.links).to match "/a" => PageRegistry::NOT_FETCHED,
+                                        "/" => PageRegistry::NOT_FETCHED
       end
       it "adds page assets" do
-        expect(subject.assets).to match assets
+        expect(registry.assets).to match assets
       end
     end
 
