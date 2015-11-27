@@ -18,7 +18,7 @@ describe PageFetcher do
     # curl -is http://duckduckgo.com > spec/support/duckduckgo_com.html
   end
 
-  context "when a single page site" do
+  context "when fetching a single page" do
     let(:body) { IO.read("./spec/support/duckduckgo_com.html") }
 
     subject(:fetcher) { PageFetcher.new(domain) }
@@ -26,6 +26,18 @@ describe PageFetcher do
     describe "#fetch" do
       it "fetches page body" do
         expect(fetcher.fetch_page("/")).to eq body
+      end
+    end
+  end
+
+  context "when fetching a muliple pages" do
+    let(:body) { IO.read("./spec/support/duckduckgo_com.html") }
+
+    subject(:fetcher) { PageFetcher.new(domain) }
+
+    describe "#fetch_set" do
+      it "fetches all pages" do
+        expect(fetcher.fetch_set(["/about", "/spread", "/tour"])).to eq body
       end
     end
   end
