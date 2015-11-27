@@ -15,7 +15,8 @@ class PageRegistry
     add_links([ROOT_URL])
   end
 
-  def add(page)
+  def add(html_body)
+    page = Page.new(html_body)
     add_links(page.links)
     add_assets(page.assets)
   end
