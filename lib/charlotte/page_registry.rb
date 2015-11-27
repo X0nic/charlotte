@@ -21,7 +21,7 @@ class PageRegistry
   end
 
   def add_set(page_set)
-    page_set.pages.each{ |page| add(page) }
+    page_set.pages.each { |page| add(page) }
   end
 
   def links

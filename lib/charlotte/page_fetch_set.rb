@@ -13,4 +13,3 @@ class PageFetchSet
     fetch_set.values
   end
 end
-

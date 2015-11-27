@@ -17,10 +17,10 @@ class PageFetcher
   end
 
   def fetch_page(uri)
-    html_body = http_get(uri).body
-    page = Page.new(html_body)
-    page
+    http_get(uri).body
   end
+
+  private
 
   def http_get(url_to_get)
     puts "Fetching #{@root_url}#{url_to_get}"

@@ -11,7 +11,7 @@ describe PageRegistry do
   let(:new_links) { ["/a", "/b"] }
   let(:new_page) { instance_double(Page, links: new_links, assets: new_assets) }
 
-  let(:page_set) { instance_double(PageFetchSet, pages: [page,new_page]) }
+  let(:page_set) { instance_double(PageFetchSet, pages: [page, new_page]) }
 
   context "with an empty registry" do
     describe "#initialize" do
