@@ -12,4 +12,12 @@ class PageFetchSet
   def pages
     fetch_set.values
   end
+
+  def page_for_url(url)
+    fetch_set.fetch(url)
+  end
+
+  def count
+    @fetch_set.count
+  end
 end

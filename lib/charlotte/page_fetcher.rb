@@ -17,7 +17,9 @@ class PageFetcher
   end
 
   def fetch_page(uri)
-    http_get(uri).body
+    http_get(uri).body.force_encoding("UTF-8")
+    # IO.write(File.expand_path("./spec/support/duckduckgo_com#{uri.gsub('/','-')}.html"), body)
+    # body
   end
 
   private
