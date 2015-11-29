@@ -22,7 +22,7 @@ class Page
 
   def stylesheets
     styles = html_doc.css("link")
-    styles.map { |link| link.attribute("href").to_s }.uniq.sort.delete_if(&:empty?)
+    styles.reject { |link| link.attribute("rel").to_s == "canonical" }.map { |link| link.attribute("href").to_s }.uniq.sort.delete_if(&:empty?)
   end
 
   def scripts

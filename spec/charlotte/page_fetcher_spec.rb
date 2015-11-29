@@ -1,39 +1,16 @@
 require "spec_helper"
-
-def mock_page(url)
-
-  FakeWeb.register_uri :get,
-    "http://duckduckgo.com#{url}",
-    response: IO.read(File.expand_path("#{file_path}#{url.gsub('/','-')}.http"))
-
-  FakeWeb.register_uri :get,
-    "https://duckduckgo.com#{url}",
-    response: IO.read(File.expand_path("#{file_path}#{url.gsub('/','-')}.https"))
-
-    # response = IO.read(File.expand_path("#{file_path}#{url.gsub('/','-')}.https"))
-    # IO.write(File.expand_path("#{file_path}#{url.gsub('/','-')}.html"), response)
-
-    # To grab another sample data
-    # curl -is http://duckduckgo.com > spec/support/duckduckgo_com.html
-end
-
-def load_page(url)
-  IO.read("#{file_path}#{url.gsub('/','-')}.html")
-end
-
 describe PageFetcher do
-  let(:file_path) { "./spec/support/#{domain.gsub('.', '_')}" }
   let(:domain) { "duckduckgo.com" }
-  let(:index_body) { load_page("/") }
-  let(:about_body) { load_page("/about") }
-  let(:spread_body) { load_page("/spread") }
-  let(:tour_body) { load_page("/tour") }
+  let(:index_body) { load_page(domain, "/") }
+  let(:about_body) { load_page(domain, "/about") }
+  let(:spread_body) { load_page(domain, "/spread") }
+  let(:tour_body) { load_page(domain, "/tour") }
 
   before do
-    mock_page("/")
-    mock_page("/about")
-    mock_page("/spread")
-    mock_page("/tour")
+    mock_page(domain, "/")
+    mock_page(domain, "/about")
+    mock_page(domain, "/spread")
+    mock_page(domain, "/tour")
   end
 
   context "when fetching a single page" do
