@@ -28,13 +28,14 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "fakeweb"
+  spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "fakeweb"
 
-  spec.add_dependency "thor"
   spec.add_dependency "faraday"
   spec.add_dependency "faraday_middleware"
   spec.add_dependency "nokogiri"
+  spec.add_dependency "ruby-graphviz"
+  spec.add_dependency "thor"
 end

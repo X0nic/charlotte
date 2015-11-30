@@ -41,6 +41,29 @@ class SiteFetcher
     puts page_registry.stats
   end
 
+  def graph_results
+    require 'graphviz'
+
+    # Create a new graph
+    g = GraphViz.new( :G, :type => :digraph )
+
+    # Create two nodes
+    # hello = g.add_nodes( "Hello" )
+    # world = g.add_nodes( "World" )
+
+    # Create an edge between the two nodes
+    # g.add_edges( hello, world )
+
+    page_registry.links.each do |link, status|
+      g.add_nodes(link)
+    end
+
+    # Generate output image
+    file_name = "pages.png"
+    g.output( :png => file_name)
+    puts "File saved to: #{file_name}"
+  end
+
   private
 
   def print_header(header)

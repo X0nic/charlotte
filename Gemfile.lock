@@ -5,6 +5,7 @@ PATH
       faraday
       faraday_middleware
       nokogiri
+      ruby-graphviz
       thor
 
 GEM
@@ -44,11 +45,11 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.9)
     method_source (0.8.2)
-    mini_portile (0.6.2)
+    mini_portile2 (2.0.0)
     multipart-post (2.0.0)
     nenv (0.2.0)
-    nokogiri (1.6.6.3)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -84,6 +85,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       tins (<= 1.6.0)
+    ruby-graphviz (1.2.2)
     ruby-progressbar (1.7.5)
     shellany (0.0.1)
     slop (3.6.0)
