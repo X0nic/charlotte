@@ -8,7 +8,7 @@ describe PageRegistry do
   let(:page) { instance_double(Page, links: links, assets: assets) }
 
   let(:new_assets) { ["/test.png", "favicon.ico"] }
-  let(:new_links) { ["/a", "/b"] }
+  let(:new_links) { ["/", "/a", "/b"] }
   let(:new_page) { instance_double(Page, links: new_links, assets: new_assets) }
 
   let(:page_set) { instance_double(PageFetchSet, pages: [page, new_page]) }
@@ -89,14 +89,14 @@ describe PageRegistry do
 
     describe "#add_set" do
       before do
-        populated_registry.uri_fetched("/")
-        populated_registry.add_set(page_set)
       end
 
       it "it adds 3 links" do
         expect(populated_registry.links.count).to eq 3
       end
       it "adds page links" do
+        populated_registry.uri_fetched("/")
+        populated_registry.add_set(page_set)
         expect(populated_registry.links).to match "/a" => PageRegistry::NOT_FETCHED,
                                                   "/" => PageRegistry::FETCHED,
                                                   "/b" => PageRegistry::NOT_FETCHED

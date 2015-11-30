@@ -37,6 +37,10 @@ class PageRegistry
     fail NotRegisteredError, "Don't know about this url, can not mark it as fetched."
   end
 
+  def uris_fetched(uris)
+    uris.each{ |uri| uri_fetched(uri) }
+  end
+
   def to_s
     registry.map { |k, v| "#{k} - #{v}\n" }
   end
@@ -58,7 +62,7 @@ class PageRegistry
   def add_links(uris)
     uris_to_add = clean_uris(uris)
     uris_to_add.each do |uri|
-      registry[uri] = PageRegistry::NOT_FETCHED
+      registry[uri] = PageRegistry::NOT_FETCHED unless registry.key?(uri)
     end
   end
 
@@ -66,6 +70,6 @@ class PageRegistry
 
   def clean_uris(uris)
     # TODO: Clean this up, and test it. It won't catch everything properly.
-    uris.reject { |uri| registry.key?(uri) }.reject { |uri| uri.match(/:/) }.reject { |uri| uri.match(/#/) }
+    uris.reject { |uri| uri.match(/:/) }.reject { |uri| uri.match(/#/) }
   end
 end

@@ -18,12 +18,19 @@ describe SiteFetcher do
 
       describe "#fetch" do
         it "fetches 1 set" do
+          allow(page_registry).to receive(:uris_fetched)
           expect(page_fetcher).to receive(:fetch_set).with(["/"]).once
           fetcher.fetch
         end
         it "adds page to registry" do
           allow(page_fetcher).to receive(:fetch_set)
+          allow(page_registry).to receive(:uris_fetched)
           expect(page_registry).to receive(:add_set).once
+          fetcher.fetch
+        end
+        it "tells registry uris were fetched" do
+          allow(page_fetcher).to receive(:fetch_set)
+          expect(page_registry).to receive(:uris_fetched).with(["/"]).once
           fetcher.fetch
         end
       end

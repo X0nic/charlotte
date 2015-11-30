@@ -12,7 +12,9 @@ class SiteFetcher
 
   def fetch
     while current_level < levels
-      fetch_set = page_fetcher.fetch_set(page_registry.links_to_fetch)
+      uris = page_registry.links_to_fetch
+      fetch_set = page_fetcher.fetch_set(uris)
+      page_registry.uris_fetched(uris)
       page_registry.add_set(fetch_set)
       @current_level += 1
     end
