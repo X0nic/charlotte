@@ -18,7 +18,7 @@ describe PageFetcher do
 
     describe "#fetch" do
       it "fetches page body" do
-        expect(fetcher.fetch_page("/")).to eq index_body
+        expect(fetcher.fetch_page("/").html_body).to eq index_body
       end
     end
   end
@@ -32,13 +32,13 @@ describe PageFetcher do
         expect(subject.count).to eq 3
       end
       it "fetches /about" do
-        expect(subject.page_for_url("/about")).to eq about_body
+        expect(subject.page_for_url("/about").html_body).to eq about_body
       end
       it "fetches /spread" do
-        expect(subject.page_for_url("/spread")).to eq spread_body
+        expect(subject.page_for_url("/spread").html_body).to eq spread_body
       end
       it "fetches /tour" do
-        expect(subject.page_for_url("/tour")).to eq tour_body
+        expect(subject.page_for_url("/tour").html_body).to eq tour_body
       end
     end
   end
