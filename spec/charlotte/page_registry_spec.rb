@@ -70,8 +70,8 @@ describe PageRegistry do
 
     describe '#add' do
       before do
-        populated_registry.add(new_page)
         populated_registry.uri_fetched("/a")
+        populated_registry.add(new_page)
       end
 
       it "it adds 1 new link" do
@@ -83,6 +83,25 @@ describe PageRegistry do
                                                   "/" => PageRegistry::NOT_FETCHED
       end
       it "does not duplicate extra asset" do
+        expect(populated_registry.assets).to match assets + ["/test.png"]
+      end
+    end
+
+    describe "#add_set" do
+      before do
+        populated_registry.uri_fetched("/")
+        populated_registry.add_set(page_set)
+      end
+
+      it "it adds 3 links" do
+        expect(populated_registry.links.count).to eq 3
+      end
+      it "adds page links" do
+        expect(populated_registry.links).to match "/a" => PageRegistry::NOT_FETCHED,
+                                                  "/" => PageRegistry::FETCHED,
+                                                  "/b" => PageRegistry::NOT_FETCHED
+      end
+      it "adds page assets" do
         expect(populated_registry.assets).to match assets + ["/test.png"]
       end
     end
