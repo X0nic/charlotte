@@ -5,11 +5,11 @@ describe PageRegistry do
 
   let(:links) { ["/a", "/"] }
   let(:assets) { ["/test2.png", "favicon.ico"] }
-  let(:page) { instance_double(Page, links: links, assets: assets) }
+  let(:page) { instance_double(Page, url: "/", links: links, assets: assets) }
 
   let(:new_assets) { ["/test.png", "favicon.ico"] }
   let(:new_links) { ["/", "/a", "/b"] }
-  let(:new_page) { instance_double(Page, links: new_links, assets: new_assets) }
+  let(:new_page) { instance_double(Page, url: "/a", links: new_links, assets: new_assets) }
 
   let(:page_set) { instance_double(PageFetchSet, pages: [page, new_page]) }
 
@@ -33,6 +33,12 @@ describe PageRegistry do
       it "adds page assets" do
         expect(registry.assets).to match assets
       end
+      it "it adds 1 new page to catalog" do
+        expect(registry.page_catalog.count).to eq 1
+      end
+      it "it adds expected page to catalog" do
+        expect(registry.page_catalog["/"]).to eq page
+      end
     end
 
     describe "#add_set" do
@@ -48,6 +54,13 @@ describe PageRegistry do
       end
       it "adds page assets" do
         expect(registry.assets).to match assets + ["/test.png"]
+      end
+      it "it adds 2 new pages to catalog" do
+        expect(registry.page_catalog.count).to eq 2
+      end
+      it "it adds expected page to catalog" do
+        expect(registry.page_catalog["/"]).to eq page
+        expect(registry.page_catalog["/a"]).to eq new_page
       end
     end
 
@@ -85,10 +98,19 @@ describe PageRegistry do
       it "does not duplicate extra asset" do
         expect(populated_registry.assets).to match assets + ["/test.png"]
       end
+      it "it adds 2 new pages to catalog" do
+        expect(populated_registry.page_catalog.count).to eq 2
+      end
+      it "it adds expected page to catalog" do
+        expect(populated_registry.page_catalog["/"]).to eq page
+        expect(populated_registry.page_catalog["/a"]).to eq new_page
+      end
     end
 
     describe "#add_set" do
       before do
+        populated_registry.uri_fetched("/")
+        populated_registry.add_set(page_set)
       end
 
       it "it adds 3 links" do
@@ -103,6 +125,13 @@ describe PageRegistry do
       end
       it "adds page assets" do
         expect(populated_registry.assets).to match assets + ["/test.png"]
+      end
+      it "it adds 2 new pages to catalog" do
+        expect(populated_registry.page_catalog.count).to eq 2
+      end
+      it "it adds expected page to catalog" do
+        expect(populated_registry.page_catalog["/"]).to eq page
+        expect(populated_registry.page_catalog["/a"]).to eq new_page
       end
     end
 

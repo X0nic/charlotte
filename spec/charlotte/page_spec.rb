@@ -3,7 +3,7 @@ require "spec_helper"
 describe Page do
   let(:domain) { "duckduckgo.com" }
   let(:html) { load_page(domain, "/") }
-  subject(:page) { Page.new(html) }
+  subject(:page) { Page.new("/", html) }
 
   context "when a vaild page" do
     let(:links) { ["/about", "/spread", "/tour"] }
@@ -21,6 +21,7 @@ describe Page do
       ]
     end
 
+    it { expect(page.url).to eq "/" }
     describe "#links" do
       it "has 3 links" do
         expect(page.links.count).to eq 3

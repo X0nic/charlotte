@@ -1,7 +1,8 @@
 class Page
-  attr_reader :html_body
+  attr_reader :html_body, :url
 
-  def initialize(html_body)
+  def initialize(url, html_body)
+    @url = url
     @html_body = html_body
     @html_doc = Nokogiri::HTML(html_body)
   end

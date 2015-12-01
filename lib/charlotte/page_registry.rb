@@ -6,16 +6,19 @@ class PageRegistry
 
   ROOT_URL    = "/"
 
-  attr_reader :assets
+  attr_reader :assets, :page_catalog
 
   def initialize
     @registry = {}
     @assets = []
+    @page_catalog = {}
 
     add_links([ROOT_URL])
   end
 
   def add(page)
+    return unless page
+    page_catalog[page.url] = page unless page_catalog.key?(page.url)
     add_links(page.links)
     add_assets(page.assets)
   end
