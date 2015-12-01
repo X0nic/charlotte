@@ -47,12 +47,18 @@ class SiteFetcher
     # Create a new graph
     g = GraphViz.new( :G, :type => :digraph )
 
-    # Create two nodes
-    # hello = g.add_nodes( "Hello" )
-    # world = g.add_nodes( "World" )
+    nodes = {}
+    page_registry.links.keys.uniq.each do |url|
+      nodes[url] = g.add_nodes(url) unless nodes.key?(url)
+    end
 
-    # Create an edge between the two nodes
-    # g.add_edges( hello, world )
+    nodes.keys.each do |node_url|
+      page = page_registry.page_catalog[node_url]
+      next unless page
+      page.links.each do |url|
+        g.add_edges(nodes[node_url], nodes[url]) if nodes.key?(url)
+      end
+    end
 
     page_registry.links.each do |link, status|
       g.add_nodes(link)
