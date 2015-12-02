@@ -28,7 +28,7 @@ class PageFetcher
   def http_get(url_to_get)
     puts "Fetching #{@root_url}#{url_to_get}"
     faraday = Faraday.new(@root_url) do |connection|
-      connection.use FaradayMiddleware::FollowRedirects
+      connection.use FaradayMiddleware::FollowRedirects, limit: 5
       connection.adapter Faraday.default_adapter
     end
 
