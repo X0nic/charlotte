@@ -42,10 +42,10 @@ class SiteFetcher
   end
 
   def graph_results
-    require 'graphviz'
+    require "graphviz"
 
     # Create a new graph
-    g = GraphViz.new( :G, :type => :digraph )
+    g = GraphViz.new(:G, type: :digraph)
 
     print_header("nodes")
     nodes = {}
@@ -64,13 +64,13 @@ class SiteFetcher
       end
     end
 
-    page_registry.links.each do |link, status|
+    page_registry.links.each do |link, _status|
       g.add_nodes(link)
     end
 
     # Generate output image
     file_name = "pages.png"
-    g.output( :png => file_name)
+    g.output(png: file_name)
     puts "File saved to: #{file_name}"
   end
 

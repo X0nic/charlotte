@@ -1,6 +1,8 @@
 require "faraday"
 require "faraday_middleware"
 require "nokogiri"
+require "typhoeus"
+require "typhoeus/adapters/faraday"
 
 require "charlotte/page"
 require "charlotte/page_fetch_set"

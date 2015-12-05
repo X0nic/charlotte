@@ -1,12 +1,12 @@
 class PageFetchSet
   attr_reader :fetch_set
 
-  def initialize
+  def initialize(responses)
+    @responses = responses
     @fetch_set = {}
-  end
-
-  def add(uri, page)
-    fetch_set[uri] = page unless fetch_set.key?(uri)
+    responses.each do |url, response|
+      add(url, response)
+    end
   end
 
   def pages
@@ -18,6 +18,17 @@ class PageFetchSet
   end
 
   def count
-    @fetch_set.count
+    fetch_set.count
+  end
+
+  private
+
+  attr_reader :responses
+
+  def add(uri, response)
+    html_body = response.body.force_encoding("UTF-8")
+    page = Page.new(uri, html_body)
+    @fetch_set[uri] = page
+    @fetch_set
   end
 end

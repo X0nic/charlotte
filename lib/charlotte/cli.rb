@@ -14,21 +14,21 @@ module Charlotte
 
     desc "visualize", "Will display visualization of website"
     def visualize
-      require 'graphviz'
+      require "graphviz"
 
       # Create a new graph
-      g = GraphViz.new( :G, :type => :digraph )
+      g = GraphViz.new(:G, type: :digraph)
 
       # Create two nodes
-      hello = g.add_nodes( "Hello" )
-      world = g.add_nodes( "World" )
+      hello = g.add_nodes("Hello")
+      world = g.add_nodes("World")
 
       # Create an edge between the two nodes
-      g.add_edges( hello, world )
+      g.add_edges(hello, world)
 
       # Generate output image
       file_name = "hello_world.png"
-      g.output( :png => file_name)
+      g.output(png: file_name)
       puts "File saved to: #{file_name}"
     end
 

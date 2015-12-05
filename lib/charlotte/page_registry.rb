@@ -41,7 +41,7 @@ class PageRegistry
   end
 
   def uris_fetched(uris)
-    uris.each{ |uri| uri_fetched(uri) }
+    uris.each { |uri| uri_fetched(uri) }
   end
 
   def to_s

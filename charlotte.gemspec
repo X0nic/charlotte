@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri"
   spec.add_dependency "ruby-graphviz"
   spec.add_dependency "thor"
+  spec.add_dependency "typhoeus"
 end
