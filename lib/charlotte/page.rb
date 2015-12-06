@@ -26,21 +26,29 @@ class Page
 
   def stylesheets
     styles = html_doc.css("link")
-    styles.reject { |link| link.attribute("rel").to_s == "canonical" }.map { |link| link.attribute("href").to_s }.uniq.sort.delete_if(&:empty?)
+    clean_list(styles.reject { |link| !stylesheet(link) }.map { |link| link.attribute("href").to_s })
   end
 
   def scripts
     images = html_doc.css("scripts")
-    images.map { |link| link.attribute("src").to_s }.uniq.sort.delete_if(&:empty?)
+    clean_list(images.map { |link| link.attribute("src").to_s })
   end
 
   def get_all_hrefs(doc)
     links = doc.css("a")
 
-    links.map { |link| link.attribute("href").to_s }.uniq.sort.delete_if(&:empty?)
+    clean_list(links.map { |link| link.attribute("href").to_s })
+  end
+
+  def clean_list(list)
+    list.uniq.sort.delete_if(&:empty?)
   end
 
   def get_all_internal_hrefs(doc)
     get_all_hrefs(doc).reject { |link| link.match(/^http/) }
+  end
+
+  def stylesheet?(link)
+    link.attribute("rel").to_s == "canonical"
   end
 end

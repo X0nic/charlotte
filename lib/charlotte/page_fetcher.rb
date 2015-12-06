@@ -6,23 +6,9 @@ class PageFetcher
   end
 
   def fetch_set(links_to_fetch)
-    # page_fetch_set = PageFetchSet.new
-
-    # links_to_fetch.each do |uri|
-    #   page = fetch_page(uri)
-    #   page_fetch_set.add(uri, page)
-    # end
     responses = http_get(links_to_fetch)
-
     PageFetchSet.new(responses)
   end
-  #
-  # def fetch_page(uri)
-  #   html_body = http_get(uri).body.force_encoding("UTF-8")
-  #   Page.new(uri, html_body)
-  #   # IO.write(File.expand_path("./spec/support/duckduckgo_com#{uri.gsub('/','-')}.html"), body)
-  #   # body
-  # end
 
   private
 
