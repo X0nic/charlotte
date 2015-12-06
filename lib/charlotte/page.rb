@@ -26,7 +26,7 @@ class Page
 
   def stylesheets
     styles = html_doc.css("link")
-    clean_list(styles.reject { |link| !stylesheet(link) }.map { |link| link.attribute("href").to_s })
+    clean_list(styles.select { |link| stylesheet?(link) }.map { |link| link.attribute("href").to_s })
   end
 
   def scripts
@@ -49,6 +49,6 @@ class Page
   end
 
   def stylesheet?(link)
-    link.attribute("rel").to_s == "canonical"
+    link.attribute("rel").to_s != "canonical"
   end
 end
