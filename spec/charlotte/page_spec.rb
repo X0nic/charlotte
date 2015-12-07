@@ -16,8 +16,8 @@ describe Page do
         "/assets/icons/meta/DDG-icon_256x256.png",
         "/favicon.ico",
         "/opensearch.xml",
-        "/s1049.css",
-        "/t1049.css"
+        "/s1050.css",
+        "/t1050.css"
       ]
     end
 

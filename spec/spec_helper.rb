@@ -1,30 +1,26 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "charlotte"
 
-require "fakeweb"
+require 'vcr'
+require 'webmock/rspec'
 
-FakeWeb.allow_net_connect = false
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
+
+RSpec.configure do |config|
+  config.extend VCR::RSpec::Macros
+end
 
 def spec_path(domain)
   "./spec/support/#{domain.tr('.', '_')}"
 end
 
-def mock_page(domain, url)
-  FakeWeb.register_uri :get,
-                       "http://duckduckgo.com#{url}",
-                       response: IO.read("#{spec_path(domain)}#{url.tr('/', '-')}.http")
-
-  FakeWeb.register_uri :get,
-                       "https://duckduckgo.com#{url}",
-                       response: IO.read("#{spec_path(domain)}#{url.tr('/', '-')}.https")
-
-  # response = IO.read(File.expand_path("#{file_path}#{url.gsub('/','-')}.https"))
-  # IO.write(File.expand_path("#{file_path}#{url.gsub('/','-')}.html"), response)
-
-  # To grab another sample data
-  # curl -is http://duckduckgo.com > spec/support/duckduckgo_com.html
+def load_page(domain, url)
+  IO.read("#{spec_path(domain)}#{url.tr('/', '-')}.html").force_encoding("UTF-8")
 end
 
-def load_page(domain, url)
-  IO.read("#{spec_path(domain)}#{url.tr('/', '-')}.html")
+def write_page(domain, url, html)
+  IO.write("#{spec_path(domain)}#{url.gsub('/','-')}.html", html)
 end

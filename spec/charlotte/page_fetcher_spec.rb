@@ -6,24 +6,24 @@ describe PageFetcher do
   let(:spread_body) { load_page(domain, "/spread") }
   let(:tour_body) { load_page(domain, "/tour") }
 
-  before do
-    mock_page(domain, "/")
-    mock_page(domain, "/about")
-    mock_page(domain, "/spread")
-    mock_page(domain, "/tour")
-  end
-
   context "when fetching a single page" do
+    use_vcr_cassette
     subject(:fetcher) { PageFetcher.new(domain) }
 
-    describe "#fetch" do
+    describe "#fetch_set" do
+      subject(:fetch_set) { fetcher.fetch_set("/") }
+
+      it "fetches 1 page" do
+        expect(fetch_set.count).to eq 1
+      end
       it "fetches page body" do
-        expect(fetcher.fetch_page("/").html_body).to eq index_body
+        expect(fetch_set.page_for_url("/").html_body).to eq index_body
       end
     end
   end
 
   context "when fetching a muliple pages" do
+    use_vcr_cassette
     subject(:fetcher) { PageFetcher.new(domain) }
 
     describe "#fetch_set" do
