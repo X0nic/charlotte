@@ -17,17 +17,17 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 07 Dec 2015 04:45:33 GMT
+      - Tue, 08 Dec 2015 06:27:10 GMT
       Content-Type:
       - text/html; charset=UTF-8
       Content-Length:
-      - '5255'
+      - '5256'
       Connection:
       - keep-alive
       Etag:
-      - '"5664ef49-1487"'
+      - '"5666689f-1488"'
       Expires:
-      - Mon, 07 Dec 2015 04:45:32 GMT
+      - Tue, 08 Dec 2015 06:27:09 GMT
       Cache-Control:
       - no-cache
       Accept-Ranges:
@@ -45,8 +45,8 @@ http_interactions:
         http-equiv=\"content-type\" content=\"text/html; charset=UTF-8;charset=utf-8\">\n<meta
         name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=1\"
         />\n<meta name=\"HandheldFriendly\" content=\"true\"/>\n\n<link rel=\"canonical\"
-        href=\"https://duckduckgo.com/\">\n\n<link rel=\"stylesheet\" href=\"/s1050.css\"
-        type=\"text/css\">\n<link rel=\"stylesheet\" href=\"/t1050.css\" type=\"text/css\">\n\n\n<link
+        href=\"https://duckduckgo.com/\">\n\n<link rel=\"stylesheet\" href=\"/s1051.css\"
+        type=\"text/css\">\n<link rel=\"stylesheet\" href=\"/t1051.css\" type=\"text/css\">\n\n\n<link
         rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" sizes=\"16x16
         24x24 32x32 64x64\"/>\n<link rel=\"apple-touch-icon\" href=\"/assets/icons/meta/DDG-iOS-icon_60x60.png\"/>\n<link
         rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"/assets/icons/meta/DDG-iOS-icon_76x76.png\"/>\n<link
@@ -62,9 +62,9 @@ http_interactions:
         content=\"The search engine that doesn't track you. A superior search experience
         with smarter answers, less clutter and real privacy.\">\n\n\n  </head>\n  <body
         id=\"pg-index\" class=\"page-index body--home\">\n\t<script type=\"text/javascript\">\nvar
-        settings_js_version = \"/s1848.js\",\n    locale = \"en_US\";\n</script>\n<script
+        settings_js_version = \"/s1849.js\",\n    locale = \"en_US\";\n</script>\n<script
         type=\"text/javascript\" src=\"/locales/en_US/LC_MESSAGES/duckduckgo-duckduckgo+sprintf+gettext+locale-simple.20151204.072317.js\"></script>\n<script
-        type=\"text/javascript\" src=\"/d1848.js\"></script>\n\n\n<script type=\"text/javascript\">\n
+        type=\"text/javascript\" src=\"/d1849.js\"></script>\n\n\n\n<script type=\"text/javascript\">\n
         \   DDG.page = new DDG.Pages.Home();\n</script>\n\n\n\n\t<div class=\"site-wrapper
         \ site-wrapper--home  js-site-wrapper\">\n\t\n\t\t<div class=\"site-wrapper-border\"></div>\n\t\n\t\n\t\t
         \ \n\t\t\t<div class=\"header-wrap--home  js-header-wrap\"></div>\n\n\t\t\t<div
@@ -100,5 +100,5 @@ http_interactions:
         ? '?t=i' : '') + kurl;\n\t}\n</script>\n\n\t\t\n\t    \n\t\n    </div> <!--
         site-wrapper -->\n  </body>\n</html>\n"
     http_version: 
-  recorded_at: Mon, 07 Dec 2015 04:45:32 GMT
+  recorded_at: Tue, 08 Dec 2015 06:27:10 GMT
 recorded_with: VCR 3.0.0

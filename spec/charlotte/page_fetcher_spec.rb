@@ -6,8 +6,7 @@ describe PageFetcher do
   let(:spread_body) { load_page(domain, "/spread") }
   let(:tour_body) { load_page(domain, "/tour") }
 
-  context "when fetching a single page" do
-    use_vcr_cassette
+  context "when fetching a single page", :vcr do
     subject(:fetcher) { PageFetcher.new(domain) }
 
     describe "#fetch_set" do
@@ -22,8 +21,7 @@ describe PageFetcher do
     end
   end
 
-  context "when fetching a muliple pages" do
-    use_vcr_cassette
+  context "when fetching a muliple pages", :vcr do
     subject(:fetcher) { PageFetcher.new(domain) }
 
     describe "#fetch_set" do

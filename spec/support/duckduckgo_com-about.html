@@ -14,8 +14,8 @@
 
 <link rel="canonical" href="https://duckduckgo.com/about">
 
-<link rel="stylesheet" href="/s1050.css" type="text/css">
-<link rel="stylesheet" href="/t1050.css" type="text/css">
+<link rel="stylesheet" href="/s1051.css" type="text/css">
+<link rel="stylesheet" href="/t1051.css" type="text/css">
 
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 24x24 32x32 64x64"/>
@@ -63,15 +63,24 @@
 
 <link rel="image_src" href="/assets/about/about-duckduckgo-posterimg.jpg"/>
 
+<!-- mapbox -->
+<script src="/js/mapbox/mapbox-2.2.3.js"></script>
+<script src="/js/mapbox/leaflet.markercluster-0.4.0.js"></script>
+<link href="/js/mapbox/mapbox-2.2.3.css" rel="stylesheet"/>
+
+
 
   </head>
   <body id="pg-about" class="page-about">
 	<script type="text/javascript">
-var settings_js_version = "/s1848.js",
+var settings_js_version = "/s1849.js",
     locale = "en_US";
 </script>
 <script type="text/javascript" src="/locales/en_US/LC_MESSAGES/duckduckgo-duckduckgo+sprintf+gettext+locale-simple.20151204.072317.js"></script>
-<script type="text/javascript" src="/d1848.js"></script>
+<script type="text/javascript" src="/d1849.js"></script>
+
+
+<script type="text/javascript" src="/t1001.js"></script>
 
 
 <script type="text/javascript">
@@ -348,7 +357,7 @@ var settings_js_version = "/s1848.js",
 		</div>
 	</div>
 </div>
-<div class="abt  blk  blk--alt  blk--arr">
+<div class="abt  blk  blk--arr">
 	<div class="cw--c">
 		<h2 class="abt__title">About Us</h2>
 		<p class="abt__sub">
@@ -386,7 +395,11 @@ Smarter search without the tracking.
 		</div>
 	</div>
 </div>
-<div class="abt  blk  blk--hero  blk--arr">
+<div class="map no-js__hide">
+	<h2 class="abt__title map__title">Meet Our Global Team</h2>
+	<div class="js-team-map"></div>
+</div>
+<div class="abt  blk  blk--hero">
 	<a name="getinvolved" class="anchor js-anchor"></a>
 	<div class="cw--c">
 		<h2 class="abt__title">Get Involved</h2>
