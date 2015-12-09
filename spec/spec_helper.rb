@@ -1,8 +1,8 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "charlotte"
 
-require 'vcr'
-require 'webmock/rspec'
+require "vcr"
+require "webmock/rspec"
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
@@ -24,5 +24,5 @@ def load_page(domain, url)
 end
 
 def write_page(domain, url, html)
-  IO.write("#{spec_path(domain)}#{url.gsub('/','-')}.html", html)
+  IO.write("#{spec_path(domain)}#{url.tr('/', '-')}.html", html)
 end

@@ -18,6 +18,7 @@ class ResultPrinter
   end
 
   private
+
   attr_reader :page_registry
 
   def print_header(header)
