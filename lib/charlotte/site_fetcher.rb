@@ -21,12 +21,6 @@ class SiteFetcher
     page_registry
   end
 
-  def parallel_fetch
-    # Do some parallel stuff here
-    # https://github.com/lostisland/faraday/wiki/Parallel-requests
-    fetch
-  end
-
   def print_results
     print_header "All Urls"
     puts page_registry.to_s
