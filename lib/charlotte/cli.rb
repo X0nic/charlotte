@@ -7,8 +7,8 @@ module Charlotte
     def fetch(domain)
       site_fetcher = SiteFetcher.new(domain, options["levels"])
 
-      site_fetcher.fetch
-      site_fetcher.print_results
+      page_registry = site_fetcher.fetch
+      ResultPrinter.new(page_registry).output
     end
 
     desc "visualize_pages DOMAIN", "This will visualize all pages found at a domain"

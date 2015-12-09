@@ -21,20 +21,6 @@ class SiteFetcher
     page_registry
   end
 
-  def print_results
-    print_header "All Urls"
-    puts page_registry.to_s
-
-    print_header "Urls to fetch"
-    puts page_registry.links_to_fetch
-
-    print_header "Assets"
-    puts page_registry.assets.uniq
-
-    print_header("Stats")
-    puts page_registry.stats
-  end
-
   def graph_results
     require "graphviz"
 

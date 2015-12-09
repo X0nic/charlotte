@@ -8,6 +8,7 @@ require "charlotte/page"
 require "charlotte/page_fetch_set"
 require "charlotte/page_fetcher"
 require "charlotte/page_registry"
+require "charlotte/result_printer"
 require "charlotte/site_fetcher"
 require "charlotte/version"
 
