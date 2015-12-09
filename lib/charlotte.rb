@@ -12,5 +12,12 @@ require "charlotte/site_fetcher"
 require "charlotte/version"
 
 module Charlotte
-  # Your code goes here...
+  def self.logger
+    @@logger ||= begin
+                   logger = Logger.new(STDERR)
+                   logger.level = Logger::WARN
+                   # logger.formatter = LogFormatter.new
+                   logger
+                 end
+  end
 end

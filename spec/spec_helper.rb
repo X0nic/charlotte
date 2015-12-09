@@ -10,6 +10,11 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 end
 
+RSpec.configure do |c|
+  # disable logging while tests are running
+  c.before { allow($stderr).to receive(:write) }
+end
+
 def spec_path(domain)
   "./spec/support/#{domain.tr('.', '_')}"
 end

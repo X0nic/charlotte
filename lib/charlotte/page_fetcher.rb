@@ -17,7 +17,7 @@ class PageFetcher
 
     connection.in_parallel do
       Array(urls_to_get).each do |url_to_get|
-        puts "Fetching #{@root_url}#{url_to_get}"
+        Charlotte.logger.info "Fetching #{@root_url}#{url_to_get}"
         responses[url_to_get] = connection.get(url_to_get)
       end
     end
