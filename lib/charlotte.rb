@@ -5,6 +5,7 @@ require "typhoeus"
 require "typhoeus/adapters/faraday"
 require "graphviz"
 
+require "charlotte/asset_visualizer"
 require "charlotte/page"
 require "charlotte/page_fetch_set"
 require "charlotte/page_fetcher"

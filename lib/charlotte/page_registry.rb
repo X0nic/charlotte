@@ -35,6 +35,10 @@ class PageRegistry
     registry.reject { |_k, v| v == PageRegistry::FETCHED }.keys
   end
 
+  def links_fetched
+    registry.select { |_k, v| v == PageRegistry::FETCHED }.keys
+  end
+
   def uri_fetched(uri)
     return registry[uri] = PageRegistry::FETCHED if registry.key?(uri)
     fail NotRegisteredError, "Don't know about this url, can not mark it as fetched."
