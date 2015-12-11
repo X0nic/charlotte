@@ -32,6 +32,7 @@ class AssetVisualizer
     file_name = "assets.png"
     g.output(png: file_name)
     puts "File saved to: #{file_name}"
+    file_name
   end
 
   private

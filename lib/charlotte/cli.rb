@@ -17,7 +17,8 @@ module Charlotte
       site_fetcher = SiteFetcher.new(domain, options["levels"])
 
       page_registry = site_fetcher.fetch
-      PageVisualizer.new(page_registry).output
+      file_name = PageVisualizer.new(page_registry).output
+      system "open #{file_name}"
     end
 
     desc "visualize_assets DOMAIN", "This will visualize all page assets found at a domain"
@@ -26,7 +27,8 @@ module Charlotte
       site_fetcher = SiteFetcher.new(domain, options["levels"])
 
       page_registry = site_fetcher.fetch
-      AssetVisualizer.new(page_registry).output
+      file_name = AssetVisualizer.new(page_registry).output
+      system "open #{file_name}"
     end
 
     desc "version", "Print Charlotte's version information"

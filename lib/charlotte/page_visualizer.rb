@@ -32,6 +32,7 @@ class PageVisualizer
     file_name = "pages.png"
     g.output(png: file_name)
     puts "File saved to: #{file_name}"
+    file_name
   end
 
   private
