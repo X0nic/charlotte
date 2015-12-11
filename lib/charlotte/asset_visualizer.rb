@@ -28,10 +28,6 @@ class AssetVisualizer
       end
     end
 
-    # page_registry.links.each do |link, _status|
-    #   g.add_nodes(link)
-    # end
-
     # Generate output image
     file_name = "assets.png"
     g.output(png: file_name)
