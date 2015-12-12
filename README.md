@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    # Fetch and display all links and assets for a site
+    $ charlotte fetch duckduckgo.com
+
+    # Fetch and display all links and assets for a site, but only decend two levels
+    $ charlotte fetch duckduckgo.com -l 2
+
+    # Fetch site, and display links between all pages
+    $ charlotte visualize_pages duckduckgo.com
+
+    # Fetch site, and display links between pages and assets
+    $ charlotte visualize_assets duckduckgo.com
 
 ## Development
 
