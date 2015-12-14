@@ -4,8 +4,6 @@ class PageVisualizer
   end
 
   def output
-    # Create a new graph
-    GraphViz::options( :use => "fdp" )
     g = GraphViz.new(:G, type: :digraph, :rankdir => "LR")
 
     print_header("nodes")
