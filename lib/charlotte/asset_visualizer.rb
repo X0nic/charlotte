@@ -4,7 +4,7 @@ class AssetVisualizer
   end
 
   def output
-    g = GraphViz.new(:G, type: :digraph, :rankdir => "LR")
+    g = GraphViz.new(:G, type: :digraph, rankdir: "LR")
 
     print_header("nodes")
     nodes = {}

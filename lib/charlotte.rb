@@ -17,11 +17,10 @@ require "charlotte/version"
 
 module Charlotte
   def self.logger
-    @@logger ||= begin
-                   logger = Logger.new(STDERR)
-                   logger.level = Logger::WARN
-                   # logger.formatter = LogFormatter.new
-                   logger
-                 end
+    @logger ||= begin
+                  logger = Logger.new(STDERR)
+                  logger.level = Logger::WARN
+                  logger
+                end
   end
 end
