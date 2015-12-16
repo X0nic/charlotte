@@ -1,4 +1,5 @@
 require "thor"
+require "mkmf"
 
 module Charlotte
   class CLI < Thor
@@ -18,7 +19,7 @@ module Charlotte
 
       page_registry = site_fetcher.fetch
       file_name = PageVisualizer.new(page_registry).output
-      system "open #{file_name}"
+      open file_name
     end
 
     desc "visualize_assets DOMAIN", "This will visualize all page assets found at a domain"
@@ -28,7 +29,7 @@ module Charlotte
 
       page_registry = site_fetcher.fetch
       file_name = AssetVisualizer.new(page_registry).output
-      system "open #{file_name}"
+      open file_name
     end
 
     desc "version", "Print Charlotte's version information"
@@ -36,5 +37,12 @@ module Charlotte
       puts "Charlotte version #{Charlotte::Version}"
     end
     map %w(-v --version) => :version
+
+    private
+
+    def open(file_name)
+      return system "open #{file_name}" if find_executable "open"
+      puts "Sorry, can only open file on OS X"
+    end
   end
 end
